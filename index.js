@@ -3,20 +3,12 @@
   const clockEl = document.createElement('time');
   el.insertAdjacentElement('beforeend', clockEl);
 
-
-  const callback = (deadline) => {
-    const fn = () => {
-      const now = Date.now();
-      clockEl.textContent = formatTime(now);
-      if (deadline.timeRemaining() > 0) {
-        setTimeout(fn, 0);
-      } else {
-        requestIdleCallback(callback);
-      }
-    }
-    fn();
+  const callback = () => {
+    const now = Date.now();
+    clockEl.textContent = formatTime(now);
+    requestAnimationFrame(callback);
   };
-  requestIdleCallback(callback);
+  requestAnimationFrame(callback);
 })();
 
 function formatTime(dateNum) {
