@@ -14,8 +14,10 @@
   function toggleNegate(event) {
     if (rootEl.classList.contains(negateClassName)) {
       rootEl.classList.remove(negateClassName);
+      document.title = "white clock";
     } else {
       rootEl.classList.add(negateClassName);
+      document.title = "black clock";
     }
   }
   rootEl.addEventListener("click", toggleNegate, { passive: true });
